@@ -1,1 +1,1 @@
-fetch_titles_worker: bundle exec sidekiq -c 2
+fetchtitlesworker: bundle exec sidekiq -c 2
