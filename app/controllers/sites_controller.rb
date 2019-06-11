@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
   def index
-    @sites = Site.all.limit(100)
+    @sites = Site.all.order(visits: :desc).limit(100)
   end
 
   def new
@@ -11,13 +11,11 @@ class SitesController < ApplicationController
     @site     = Site.new(site_params)
     response  = Sites::Shortify.call(@site).response
     if @site.save && response
+      FetchTitlesWorker.perform_async(@site.id)
       redirect_to sites_path, notice:'The URL was successfully shortified!'
     else
       render :new, alert: 'Error. Please try again.'
     end
-  end
-
-  def show
   end
 
   private
