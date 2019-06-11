@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
   def index
-    @sites = Site.all.order(visits: :desc).limit(100)
+    @sites = Site.most_visited
   end
 
   def new

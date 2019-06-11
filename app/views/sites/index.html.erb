@@ -12,6 +12,7 @@
         <th scope="col">Rank</th>
         <th scope="col">Title</th>
         <th scope="col">Short Url</th>
+        <th scope="col">Visits</th>
       </tr>
       </thead>
       <tbody>
@@ -20,6 +21,7 @@
           <td><%= index + 1 %></td>
           <td><%= site.title || 'Fetching data...' %></td>
           <td><%= site.shor_url %></td>
+          <td><%= site.visits %></td>
         </tr>
       <% end %>
       </tbody>

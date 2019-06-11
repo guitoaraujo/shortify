@@ -21,4 +21,16 @@ RSpec.describe Site, type: :model do
       expect(site).to eq(true)
     end
   end
+
+  context 'scopes' do
+    before(:each) do
+      Site.new(long_url: 'http://test1.com').save
+      Site.new(long_url: 'http://test2.com').save
+      Site.new(long_url: 'http://test3.com').save
+    end
+
+    it 'should return most visited sites' do
+      expect(Site.most_visited.size).to eq(3)
+    end
+  end
 end
