@@ -25,8 +25,11 @@ module Sites
 
         driver.get(urls.sample) do |page|
           page.links.each do |link|
-            title = link.click.title
-            Site.create(long_url: link.href, title: title, visits: rand(1..100))
+            5.times do
+              title = link.click.title
+              site  = Site.create(long_url: link.href, title: title, visits: rand(1..100))
+              FetchTitlesWorker.perform_async(site.id)
+            end
           end
         end
       end
