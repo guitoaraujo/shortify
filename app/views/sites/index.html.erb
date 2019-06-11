@@ -1,2 +1,28 @@
-<h1>Sites#index</h1>
-<p>Find me in app/views/sites/index.html.erb</p>
+<% if notice %>
+  <div class="alert alert-success" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
+<div class="row justify-content-center mt-5">
+  <div class="col-10">
+    <h3>Top 100 - Most visited sites</h3>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Rank</th>
+        <th scope="col">Title</th>
+        <th scope="col">Short Url</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @sites.each_with_index do |site, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= site.title || 'Fetching data...' %></td>
+          <td><%= site.shor_url %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

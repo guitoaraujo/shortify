@@ -1,2 +1,20 @@
-<h1>Sites#new</h1>
-<p>Find me in app/views/sites/new.html.erb</p>
+<div class="row justify-content-center mt-5">
+  <div class="col-4">
+    <%= form_with model: @site, local: true do |form| %>
+      <% if @site.errors.any? %>
+        <div id="alert" class="alert alert-danger">
+          <ul>
+            <% @site.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <label>URL</label>
+        <%= form.text_field :long_url, class: 'form-control', placeholder: 'http://example.com/abc/132...' %>
+      </div>
+      <%= form.submit 'Shortify', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
