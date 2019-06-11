@@ -5,7 +5,8 @@ class FetchTitlesWorker
     site = Site.find(site_id)
     driver = Mechanize.new
     driver.get(site.long_url) do |page|
-      site.update(title: page.title)
+      title = page.title.gsub("\n", ' ').squeeze(' ')
+      site.update(title: title)
     end
   end
 end

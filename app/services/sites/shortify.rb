@@ -15,7 +15,7 @@ module Sites
     end
 
     def call
-      @response = get_shor_url
+      @shor_url.blank? ? @response = get_shor_url : @response = true
     end
 
     private
