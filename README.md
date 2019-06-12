@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was built in ruby 2.6.1 and Rails 5.2.3.
 
-Things you may want to cover:
+You should run rails db:create db:migrate.
+If you want to populate the database, run a get request to /populate_me and wait a few seconds.
+This action finds randomicaly 5 sites throgh google and save the data on database.
 
-* Ruby version
+there is an API /api/v1/shor where you can run get requests to retrieve long URL passing a short URL, 
+something like this: /api/v1/shor?long_url=https://medium.com.
 
-* System dependencies
+Worker fetch_titles_worker
+here i am using Mechanize gem to retrieve data from urls. This way i can find title of the page and some other things.
 
-* Configuration
+Service Shortify
+here is the mos important topic of the project. How to shortify?
 
-* Database creation
+After read some articles and watch some videos about it, i decided create a shor url using this: 
+[(0..9).to_a,('A'..'Z').to_a,('a'..'z').to_a].flatten.sample(7).join to get something like this: 'A4ntR45'. 
+Then i concatenate this string with domain and that is it. 
+i just need a long URl to transform it into this short URL.
 
-* Database initialization
+Please take a look at services/sites/shortify.
 
-* How to run the test suite
+You can find the project running on Heroku here: https://bluecodingshortifytest.herokuapp.com/sites
 
-* Services (job queues, cache servers, search engines, etc.)
+If by anychance you have any comments, feel free to help.
 
-* Deployment instructions
+Cheers!
 
-* ...
+
