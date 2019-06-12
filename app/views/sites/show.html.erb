@@ -1,0 +1,15 @@
+<% if notice %>
+  <div class="alert alert-success" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
+<div class="row justify-content-center mt-5">
+  <div class="col-12">
+    <ul class="list-group">
+      <li class="list-group-item active">Title - <%= @site.title || 'Fetching data...' %></li>
+      <li class="list-group-item">Long URL - <%= link_to @site.long_url, @site.long_url %></li>
+      <li class="list-group-item">Short URL - <%= @site.shor_url %></li>
+      <li class="list-group-item">Visited <%= @site.visits %> times</li>
+    </ul>
+  </div>
+</div>

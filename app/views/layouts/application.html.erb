@@ -32,6 +32,10 @@
                 <%= link_to 'Top 100', sites_path, class: 'nav-link' %>
               </li>
             </ul>
+            <%= form_tag(get_long_url_path, method: :get, class: 'form-inline my-2 my-lg-0') do %>
+              <%= text_field_tag :shor_url, nil, class: 'form-control mr-sm-2', placeholder: 'Short URL here'  %>
+              <%= submit_tag 'Search', class: 'btn btn-outline-success my-2 my-sm-0', data: { confirm: 'You will be redirect to this url. Are you sure?' } %>
+            <% end %>
           </div>
         </nav>
       </div>

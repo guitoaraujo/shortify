@@ -19,7 +19,7 @@
       <% @sites.each_with_index do |site, index| %>
         <tr>
           <td><%= index + 1 %></td>
-          <td><%= site.title || 'Fetching data...' %></td>
+          <td><%= link_to site.title, site_path(site) %></td>
           <td><%= site.shor_url %></td>
           <td><%= site.visits %></td>
         </tr>
