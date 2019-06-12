@@ -22,7 +22,7 @@ class SitesController < ApplicationController
     end
   end
 
-  def populate
+  def populate_me
     Sites::Populate.call if Site.count < 20
     redirect_to sites_path, notice:'You successfully requested new sites '
   end
