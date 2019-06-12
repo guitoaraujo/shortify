@@ -24,12 +24,11 @@ module Sites
         )
 
         driver.get(urls.sample) do |page|
-          page.links.each do |link|
-            5.times do
-              title = link.click.title
-              site  = Site.create(long_url: link.href, title: title, visits: rand(1..100))
-              FetchTitlesWorker.perform_async(site.id)
-            end
+          page.links.each_with_index do |link, index|
+            break if index >= 4
+            title = link.click.title
+            site  = Site.create(long_url: link.href, title: title, visits: rand(1..100))
+            Sites::Shortify.call(site)
           end
         end
       end
